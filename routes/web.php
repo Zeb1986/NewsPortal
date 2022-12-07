@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsletterController;
 use \App\Http\Controllers\SessionController;
 use \App\Http\Controllers\PostController;
@@ -22,6 +23,10 @@ Route::post('register', [RegisterController::class, 'store'])->middleware('guest
 Route::get('login', [SessionController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
+
+Route::get('feedback', [FeedbackController::class, 'create']);
+Route::post('feedback', [FeedbackController::class, 'store']);
+Route::get('admin/feedback', [FeedbackController::class, 'index']);
 
 //Admin
 Route::middleware('can:admin')->group(function (){

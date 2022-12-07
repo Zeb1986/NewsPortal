@@ -30,6 +30,7 @@
                     @admin
                     <x-dropdown-item href="admin/posts" :active="request()->is('admin/posts')">Dashboard</x-dropdown-item>
                     <x-dropdown-item href="admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                    <x-dropdown-item href="admin/feedback" :active="request()->is('admin/feedback')">Feedback</x-dropdown-item>
                     @endadmin
                     <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>
                     <form id="logout-form" method="POST" action="/logout" class="hidden">
@@ -47,6 +48,9 @@
             <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates
             </a>
+                <a href="/feedback" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                    Leave your feedback
+                </a>
         </div>
     </nav>
 

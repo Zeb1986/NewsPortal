@@ -19,8 +19,6 @@ class AdminPostController extends Controller
     }
 
     public function store() {
-        $post = new Post();
-
         $attributes = $this->validatePost();
 
         $attributes['user_id'] = auth()->id();
@@ -55,7 +53,7 @@ class AdminPostController extends Controller
      */
     protected function validatePost(?Post $post = null): array
     {
-        $post?? new Post();
+        $post??= new Post();
         return request()->validate([
             'title' => 'required',
             'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post)],
@@ -63,7 +61,7 @@ class AdminPostController extends Controller
             'excerpt' => 'required',
             'body' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'published_at' => 'required'
+//            'published_at' => 'required'
         ]);
     }
 }
