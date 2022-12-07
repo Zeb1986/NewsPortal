@@ -20,13 +20,13 @@ class DatabaseSeeder extends Seeder
     {
         Comment::factory(10)->create();
 
-         $user = User::factory()->create([
-//             'name' => 'Viache'
-         ]);
-
-         Post::factory(15)->create([
-             'user_id' => $user->id
-         ]);
+//         $user = User::factory(10)->create([
+////             'name' => 'Viache'
+//         ]);
+//
+//         Post::factory(15)->create([
+//             'user_id' => $user->id
+//         ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
