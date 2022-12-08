@@ -14,6 +14,9 @@
                     <a href="/admin/posts/create" class="{{request()->is("admin/posts/create")? 'text-blue-500': ''}}">New Post</a>
                 </li>
                 <li>
+                    <a href="/admin/category/create" class="{{request()->is("/admin/category/create")? 'text-blue-500': ''}}">New Category</a>
+                </li>
+                <li>
                     <a href="/admin/feedback" class="{{request()->is("admin/feedback")? 'text-blue-500': ''}}">Feedback</a>
                 </li>
             </ul>

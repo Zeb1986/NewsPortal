@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DemoMail;
 use App\Models\Post;
+use App\Models\Subscriber;
 use Illuminate\Validation\Rule;
+use Mail;
 
 class AdminPostController extends Controller
 {
@@ -25,6 +28,17 @@ class AdminPostController extends Controller
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
         Post::create($attributes);
+
+
+        $mailData = [
+            'title' => $attributes['title'],
+            'body' => $attributes['excerpt'],
+            'slug' => $attributes['slug']
+        ];
+
+        $emails = Subscriber::pluck('email');
+
+        Mail::to($emails)->send(new DemoMail($mailData));
 
         return redirect('/');
     }
