@@ -4,7 +4,7 @@
 >
     <div class="py-6 px-5">
         <div>
-            <img src="{{asset("/storage/".$post->thumbnail)}}" alt="Blog Post illustration" class="rounded-xl">
+            <img src="{{asset("/storage/".($post->thumbnail?$post->thumbnail:"thumbnails/illustration-1.png"))}}" alt="Blog Post illustration" class="rounded-xl">
         </div>
 
         <div class="mt-8 flex flex-col justify-between">
@@ -29,9 +29,6 @@
                     {{$post->excerpt}}
                 </p>
 
-                <p class="mt-4">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
             </div>
 
             <footer class="flex justify-between items-center mt-8">

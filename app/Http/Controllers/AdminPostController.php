@@ -29,16 +29,7 @@ class AdminPostController extends Controller
 
         Post::create($attributes);
 
-
-        $mailData = [
-            'title' => $attributes['title'],
-            'body' => $attributes['excerpt'],
-            'slug' => $attributes['slug']
-        ];
-
-        $emails = Subscriber::pluck('email');
-
-        Mail::to($emails)->send(new DemoMail($mailData));
+        MailController::sendNotif($attributes);
 
         return redirect('/');
     }

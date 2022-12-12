@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
-use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Mail;
 use App\Mail\DemoMail;
@@ -15,16 +14,20 @@ class MailController extends Controller
      *
      * @return response()
      */
-    public function index()
+    public static function sendNotif($attributes)
     {
         $mailData = [
-            'title' => 'New post is published',
-            'body' => 'This is for testing email using smtp.'
+            'title' => $attributes['title'],
+            'body' => $attributes['excerpt'],
+            'slug' => $attributes['slug']
         ];
-        $emails = Subscriber::pluck('email');
-//        Mail::to('zeb1986@ukr.net')->send(new DemoMail($mailData));
 
-        dd($emails);
+        $emails = Subscriber::pluck('email');
+
+        if(sizeof($emails)==0) {
+            return null;
+        }
+        Mail::to($emails)->send(new DemoMail($mailData));
     }
 
     public function store() {

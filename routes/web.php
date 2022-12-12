@@ -11,7 +11,6 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CommentController;
 
-Route::get('/mail', [MailController::class, 'index']);
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class, 'show']);

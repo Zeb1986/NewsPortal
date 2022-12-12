@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
         Comment::factory(10)->create();
 
 //         $user = User::factory(10)->create([
-////             'name' => 'Viache'
+//             'name' => 'Viache',
+//             'email' => 'zeb1986@ukr.net',
+//             'password' => bcrypt(1234567)
 //         ]);
 //
 //         Post::factory(15)->create([
